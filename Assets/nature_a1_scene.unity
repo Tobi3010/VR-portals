@@ -1759,6 +1759,10 @@ PrefabInstance:
       propertyPath: m_ValidColorGradient.m_ColorSpace
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7347985736721345035, guid: 3ae85151397a9604aafcf350da9c3afa, type: 3}
+      propertyPath: m_TurnAmount
+      value: 22.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5563199296126487199, guid: 3ae85151397a9604aafcf350da9c3afa, type: 3}
