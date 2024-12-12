@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/test_teleport.unity
     guid: d04d93dd6d3c5fa48ac9c37fa048bf12
+  - enabled: 0
+    path: Assets/Samples/XR Interaction Toolkit/3.0.7/Hands Interaction Demo/HandsDemoScene.unity
+    guid: 3ff35cecbcc52cc42945cf531638a60a
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}

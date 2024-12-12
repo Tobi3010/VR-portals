@@ -30,6 +30,10 @@ public class Controller_Colision : MonoBehaviour
             }
             ChangeColor();
         }
+        if (other.CompareTag("object"))
+        {
+            ChangeColor();
+        }
     }
     
     private void ChangeColor()
@@ -39,7 +43,7 @@ public class Controller_Colision : MonoBehaviour
         {
             cubeRenderer = GetComponent<Renderer>();
         }
-
+        
         // Pick a random color from the array
         Color randomColor = colors[Random.Range(0, colors.Length)];
 
