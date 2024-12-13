@@ -955,6 +955,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1121823704}
   - {fileID: 1816653733}
   - {fileID: 1952878137}
   - {fileID: 1433800322}
@@ -4897,7 +4898,7 @@ GameObject:
   - component: {fileID: 571777125}
   m_Layer: 0
   m_Name: Sphere2
-  m_TagString: Untagged
+  m_TagString: object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6346,6 +6347,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5528351815fd4c04abf537f22c7e18f1, type: 3}
       propertyPath: m_Name
       value: Branch_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5528351815fd4c04abf537f22c7e18f1, type: 3}
+      propertyPath: m_TagString
+      value: object
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5528351815fd4c04abf537f22c7e18f1, type: 3}
       propertyPath: m_LocalScale.x
@@ -7895,7 +7900,7 @@ GameObject:
   - component: {fileID: 914800739}
   m_Layer: 0
   m_Name: Sphere1
-  m_TagString: Untagged
+  m_TagString: object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9110,7 +9115,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1121823704}
   - component: {fileID: 1121823703}
-  - component: {fileID: 1121823702}
   - component: {fileID: 1121823705}
   m_Layer: 0
   m_Name: ballParent
@@ -9119,28 +9123,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &1121823702
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121823701}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!54 &1121823703
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9177,12 +9159,12 @@ Transform:
   m_GameObject: {fileID: 1121823701}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.15858863, z: -0, w: 0.9873448}
-  m_LocalPosition: {x: -14.25, y: 1.42, z: 11.29}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.084804535, y: -0.4383, z: 0.8530326}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1685909920}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 59511804}
   m_LocalEulerAnglesHint: {x: 0, y: 18.25, z: 0}
 --- !u!114 &1121823705
 MonoBehaviour:
@@ -9968,7 +9950,7 @@ Transform:
   m_GameObject: {fileID: 1266936691}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0019495378, y: 0.0054136124, z: 0.23985122, w: 0.97079265}
-  m_LocalPosition: {x: -0.97000027, y: -1.04, z: -0.07999992}
+  m_LocalPosition: {x: 4.96, y: -0.81, z: -0.14}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13521,7 +13503,6 @@ GameObject:
   - component: {fileID: 1685909922}
   - component: {fileID: 1685909921}
   - component: {fileID: 1685909924}
-  - component: {fileID: 1685909923}
   m_Layer: 0
   m_Name: Baseball
   m_TagString: Untagged
@@ -13597,33 +13578,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1685909919}
   m_Mesh: {fileID: -8279484070357006803, guid: 58221b671a0c3af4c86677e9fb49b604, type: 3}
---- !u!54 &1685909923
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685909919}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!135 &1685909924
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15398,7 +15352,7 @@ Transform:
   m_GameObject: {fileID: 1964205810}
   serializedVersion: 2
   m_LocalRotation: {x: 0.21293443, y: 0.6513205, z: -0.19786637, w: 0.70092046}
-  m_LocalPosition: {x: -2.8897305, y: 0.9797368, z: -0.12331581}
+  m_LocalPosition: {x: 3.58, y: 0.82, z: -0.15}
   m_LocalScale: {x: 1.0889181, y: 0.8093275, z: 1.0889181}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16997,5 +16951,4 @@ SceneRoots:
   - {fileID: 1803936286}
   - {fileID: 59511804}
   - {fileID: 388236378}
-  - {fileID: 1121823704}
   - {fileID: 1764154174}
