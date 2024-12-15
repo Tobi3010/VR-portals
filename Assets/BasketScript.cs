@@ -7,54 +7,50 @@ public class BasketScript : MonoBehaviour
     
     private Vector3 original_size;
     private Vector3 start_location;
-    private bool isMoving = false;  // to check if the basket is moving
-    private bool easyMode = false;  
 
     private void Start()
     {
-        start_location = transform.position;  // Store the initial position and size of the basket
-        original_size = transform.localScale;
+        start_location = transform.position;  // we want to store the initial position and size of the basket
+        original_size = transform.localScale; // so that we can restore its original size and location
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("object"))
         {
-            print("GOAAAL!");
-            hits++;
-            if(hits == 2){
-                transform.position = start_location;
-
-            }
-            // If third hit, restart 
-            if (hits == 3) 
-            {
-                hits = 0;
-                transform.position = start_location;
-                transform.localScale = original_size; 
-            }
+            print("GOAAAL!");   // some sort of console indicator that this works!
+            // hits++; 
+            // if(hits == 2){
+            //     transform.position = start_location;    // if we enter mode 2, pulsing, we want to return the basket to its original location
+            // }
+            // if (hits == 3) 
+            // {   
+            //     hits = 0;   
+            //     transform.position = start_location;
+            //     transform.localScale = original_size; 
+            // }
 
         }
     }
 
     private void Update()
     {
-        // Move the basket continuously if in mode 1 (hits == 1)
+        // if the basket is in any specific mode, we want it to keep calling the function of that mode, hence why we are calling them in update
         if (hits == 1)
         {
             MoveBasket();
         }
-        // Pulsing (scaling) basket behavior when in easy mode
         if (hits == 2)
         {
-            BasketPulse();  // Handle pulsing or scaling behavior
+            BasketPulse();  
         }
 
     }
 
     private void MoveBasket()
     {
-        // Move the basket back and forth using a sine wave for smooth movement
+        // hard mode, even though it's slow lol
+        // move the basket back and forth using the sine wave as it loops between -1 and 1
             float speed = 0.2F;
             float distance = 5.0F;
             float offset = Mathf.Sin(Time.time * speed) * distance / 2;
@@ -63,10 +59,23 @@ public class BasketScript : MonoBehaviour
 
     private void BasketPulse()
     {
-        // You can add logic here to "pulse" the basket, like changing its scale over time
-        // For now, this function is only called in the "easyMode", but could be expanded
-            float pulseSpeed = 1.0f;
-            float scale = Mathf.PingPong(Time.time * pulseSpeed, 1.5f) + 0.25f;
+            // this is supposed to be the easy mode, where the basket keeps sizing itself up from its original size and back down.
+            // we only want the basket to grow to 1.5 of its size and then slowly go back down, so we will use the sine wave still
+            // but now we get the absolute value so we go from 0 to 1.
+
+            float pulseSpeed = 0.5f;
+            float maxGrowth = 0.5f; // Object grows up to 50% larger
+            float originalScale = 1.0f; // Original size of the object
+
+            float scale = Mathf.Abs(Mathf.Sin(Time.time * pulseSpeed)) * maxGrowth + originalScale;
             transform.localScale = new Vector3(scale, scale, scale);  // Scale the basket uniformly
+    }
+    
+    public void SetBasketMode(int mode)
+    {
+        // a function so the button can trigger the mode in the basket
+        hits = mode;
+
+        Debug.Log("Basket mode set to: " + mode);
     }
 }
