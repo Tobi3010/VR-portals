@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
 #if XR_HANDS_1_1_OR_NEWER
 using UnityEngine.XR.Hands;
@@ -6,195 +7,52 @@ using UnityEngine.XR.Hands;
 
 namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
 {
-    /// <summary>
-    /// Behavior that provides events for when an <see cref="XRHand"/> starts and ends a poke gesture. The gesture is
-    /// detected if the index finger is extended and the middle, ring, and little fingers are curled in.
-    /// </summary>
-    public class PokeGestureDetector : MonoBehaviour
+    public class PokeGesturePush : MonoBehaviour
     {
         [SerializeField]
-        [Tooltip("Which hand to check for the poke gesture.")]
-#if XR_HANDS_1_1_OR_NEWER
-        Handedness m_Handedness;
-#else
-        int m_Handedness;
-#endif
+        [Tooltip("Force to apply when the finger touches an object.")]
+        private float pushForce = 10f;
 
         [SerializeField]
-        [Tooltip("Called when the hand has started a poke gesture.")]
-        UnityEvent m_PokeGestureStarted;
+        [Tooltip("The index finger tip GameObject (should have a Collider).")]
+        private Transform indexFingerTip;
 
-        [SerializeField]
-        [Tooltip("Called when the hand has ended a poke gesture.")]
-        UnityEvent m_PokeGestureEnded;
-
-#if XR_HANDS_1_1_OR_NEWER
-        XRHandSubsystem m_Subsystem;
-        bool m_IsPoking;
-
-        static readonly List<XRHandSubsystem> s_Subsystems = new List<XRHandSubsystem>();
-#endif
-
-        /// <summary>
-        /// See <see cref="MonoBehaviour"/>.
-        /// </summary>
-        protected void OnEnable()
+        private void OnEnable()
         {
-#if XR_HANDS_1_1_OR_NEWER
-            SubsystemManager.GetSubsystems(s_Subsystems);
-            if (s_Subsystems.Count == 0)
-                return;
-
-            m_Subsystem = s_Subsystems[0];
-            m_Subsystem.updatedHands += OnUpdatedHands;
-#else
-            Debug.LogError("Script requires XR Hands (com.unity.xr.hands) package. Install using Window > Package Manager or click Fix on the related issue in Edit > Project Settings > XR Plug-in Management > Project Validation.", this);
-#endif
-        }
-
-        /// <summary>
-        /// See <see cref="MonoBehaviour"/>.
-        /// </summary>
-        protected void OnDisable()
-        {
-#if XR_HANDS_1_1_OR_NEWER
-            if (m_Subsystem == null)
-                return;
-
-            m_Subsystem.updatedHands -= OnUpdatedHands;
-            m_Subsystem = null;
-#endif
-        }
-
-#if XR_HANDS_1_1_OR_NEWER
-        void OnUpdatedHands(XRHandSubsystem subsystem, XRHandSubsystem.UpdateSuccessFlags updateSuccessFlags, XRHandSubsystem.UpdateType updateType)
-        {
-            var wasPoking = m_IsPoking;
-            switch (m_Handedness)
+            // Ensure the finger tip collider is set to trigger
+            if (indexFingerTip != null)
             {
-                case Handedness.Left:
-                    if (!HasUpdateSuccessFlag(updateSuccessFlags, XRHandSubsystem.UpdateSuccessFlags.LeftHandJoints))
-                        return;
-
-                    var leftHand = subsystem.leftHand;
-                    m_IsPoking = IsIndexExtended(leftHand) && IsMiddleGrabbing(leftHand) && IsRingGrabbing(leftHand) &&
-                        IsLittleGrabbing(leftHand);
-                    break;
-                case Handedness.Right:
-                    if (!HasUpdateSuccessFlag(updateSuccessFlags, XRHandSubsystem.UpdateSuccessFlags.RightHandJoints))
-                        return;
-
-                    var rightHand = subsystem.rightHand;
-                    m_IsPoking = IsIndexExtended(rightHand) && IsMiddleGrabbing(rightHand) && IsRingGrabbing(rightHand) &&
-                        IsLittleGrabbing(rightHand);
-                    break;
+                var collider = indexFingerTip.GetComponent<Collider>();
+                if (collider != null)
+                    collider.isTrigger = true;
             }
-
-            if (m_IsPoking && !wasPoking)
-                StartPokeGesture();
-            else if (!m_IsPoking && wasPoking)
-                EndPokeGesture();
         }
 
-        /// <summary>
-        /// Determines whether one or more bit fields are set in the flags.
-        /// Non-boxing version of <c>HasFlag</c> for <see cref="XRHandSubsystem.UpdateSuccessFlags"/>.
-        /// </summary>
-        /// <param name="successFlags">The flags enum instance.</param>
-        /// <param name="successFlag">The flag to check if set.</param>
-        /// <returns>Returns <see langword="true"/> if the bit field or bit fields are set, otherwise returns <see langword="false"/>.</returns>
-        static bool HasUpdateSuccessFlag(XRHandSubsystem.UpdateSuccessFlags successFlags, XRHandSubsystem.UpdateSuccessFlags successFlag)
+        private void OnDisable()
         {
-            return (successFlags & successFlag) == successFlag;
+            // Optional cleanup or state reset
         }
 
-        /// <summary>
-        /// Returns true if the given hand's index finger tip is farther from the wrist than the index intermediate joint.
-        /// </summary>
-        /// <param name="hand">Hand to check for the required pose.</param>
-        /// <returns>True if the given hand's index finger tip is farther from the wrist than the index intermediate joint, false otherwise.</returns>
-        static bool IsIndexExtended(XRHand hand)
+        private void OnTriggerEnter(Collider other)
         {
-            if (!(hand.GetJoint(XRHandJointID.Wrist).TryGetPose(out var wristPose) &&
-                  hand.GetJoint(XRHandJointID.IndexTip).TryGetPose(out var tipPose) &&
-                  hand.GetJoint(XRHandJointID.IndexIntermediate).TryGetPose(out var intermediatePose)))
+            if (other.attachedRigidbody != null)
             {
-                return false;
-            }
+                // Calculate push direction (away from the finger tip)
+                Vector3 pushDirection = (other.transform.position - indexFingerTip.position).normalized;
 
-            var wristToTip = tipPose.position - wristPose.position;
-            var wristToIntermediate = intermediatePose.position - wristPose.position;
-            return wristToTip.sqrMagnitude > wristToIntermediate.sqrMagnitude;
+                // Apply push force to the object
+                other.attachedRigidbody.AddForce(pushDirection * pushForce, ForceMode.Impulse);
+            }
         }
 
-        /// <summary>
-        /// Returns true if the given hand's middle finger tip is closer to the wrist than the middle proximal joint.
-        /// </summary>
-        /// <param name="hand">Hand to check for the required pose.</param>
-        /// <returns>True if the given hand's middle finger tip is closer to the wrist than the middle proximal joint, false otherwise.</returns>
-        static bool IsMiddleGrabbing(XRHand hand)
+        private void OnDrawGizmos()
         {
-            if (!(hand.GetJoint(XRHandJointID.Wrist).TryGetPose(out var wristPose) &&
-                  hand.GetJoint(XRHandJointID.MiddleTip).TryGetPose(out var tipPose) &&
-                  hand.GetJoint(XRHandJointID.MiddleProximal).TryGetPose(out var proximalPose)))
+            if (indexFingerTip != null)
             {
-                return false;
+                // Draw the interaction point for debugging
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawSphere(indexFingerTip.position, 0.01f);
             }
-
-            var wristToTip = tipPose.position - wristPose.position;
-            var wristToProximal = proximalPose.position - wristPose.position;
-            return wristToProximal.sqrMagnitude >= wristToTip.sqrMagnitude;
         }
-
-        /// <summary>
-        /// Returns true if the given hand's ring finger tip is closer to the wrist than the ring proximal joint.
-        /// </summary>
-        /// <param name="hand">Hand to check for the required pose.</param>
-        /// <returns>True if the given hand's ring finger tip is closer to the wrist than the ring proximal joint, false otherwise.</returns>
-        static bool IsRingGrabbing(XRHand hand)
-        {
-            if (!(hand.GetJoint(XRHandJointID.Wrist).TryGetPose(out var wristPose) &&
-                  hand.GetJoint(XRHandJointID.RingTip).TryGetPose(out var tipPose) &&
-                  hand.GetJoint(XRHandJointID.RingProximal).TryGetPose(out var proximalPose)))
-            {
-                return false;
-            }
-
-            var wristToTip = tipPose.position - wristPose.position;
-            var wristToProximal = proximalPose.position - wristPose.position;
-            return wristToProximal.sqrMagnitude >= wristToTip.sqrMagnitude;
-        }
-
-        /// <summary>
-        /// Returns true if the given hand's little finger tip is closer to the wrist than the little proximal joint.
-        /// </summary>
-        /// <param name="hand">Hand to check for the required pose.</param>
-        /// <returns>True if the given hand's little finger tip is closer to the wrist than the little proximal joint, false otherwise.</returns>
-        static bool IsLittleGrabbing(XRHand hand)
-        {
-            if (!(hand.GetJoint(XRHandJointID.Wrist).TryGetPose(out var wristPose) &&
-                  hand.GetJoint(XRHandJointID.LittleTip).TryGetPose(out var tipPose) &&
-                  hand.GetJoint(XRHandJointID.LittleProximal).TryGetPose(out var proximalPose)))
-            {
-                return false;
-            }
-
-            var wristToTip = tipPose.position - wristPose.position;
-            var wristToProximal = proximalPose.position - wristPose.position;
-            return wristToProximal.sqrMagnitude >= wristToTip.sqrMagnitude;
-        }
-
-        void StartPokeGesture()
-        {
-            m_IsPoking = true;
-            m_PokeGestureStarted.Invoke();
-        }
-
-        void EndPokeGesture()
-        {
-            m_IsPoking = false;
-            m_PokeGestureEnded.Invoke();
-        }
-#endif
     }
 }

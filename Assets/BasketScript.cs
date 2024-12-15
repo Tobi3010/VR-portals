@@ -53,7 +53,7 @@ public class BasketScript : MonoBehaviour
     {
         // hard mode, even though it's slow lol
         // move the basket back and forth using the sine wave as it loops between -1 and 1
-            float speed = 0.2F;
+            float speed = 0.5F;
             float distance = 5.0F;
             float offset = Mathf.Sin(Time.time * speed) * distance / 2;
             transform.position = new Vector3(start_location.x + offset, start_location.y, start_location.z);
