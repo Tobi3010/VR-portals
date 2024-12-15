@@ -19,16 +19,18 @@ public class BasketScript : MonoBehaviour
         if (other.CompareTag("object"))
         {
             print("GOAAAL!");   // some sort of console indicator that this works!
-            // hits++; 
-            // if(hits == 2){
-            //     transform.position = start_location;    // if we enter mode 2, pulsing, we want to return the basket to its original location
-            // }
-            // if (hits == 3) 
-            // {   
-            //     hits = 0;   
-            //     transform.position = start_location;
-            //     transform.localScale = original_size; 
-            // }
+
+            hits++; 
+            if(hits == 2){
+                transform.position = start_location;    // if we enter mode 2, pulsing, we want to return the basket to its original location
+            }
+            if (hits == 3) 
+            {   
+                hits = 0;   
+                transform.position = start_location;
+                transform.localScale = original_size; 
+            }
+
 
         }
     }
@@ -79,3 +81,4 @@ public class BasketScript : MonoBehaviour
         Debug.Log("Basket mode set to: " + mode);
     }
 }
+
