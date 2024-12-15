@@ -5809,7 +5809,7 @@ GameObject:
   - component: {fileID: 635066879}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9119,7 +9119,7 @@ GameObject:
   - component: {fileID: 1121823706}
   m_Layer: 0
   m_Name: ballParent
-  m_TagString: Untagged
+  m_TagString: object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13531,7 +13531,7 @@ GameObject:
   - component: {fileID: 1685909924}
   m_Layer: 0
   m_Name: Baseball
-  m_TagString: Untagged
+  m_TagString: object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
