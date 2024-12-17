@@ -59,10 +59,7 @@ public class DataLogger : MonoBehaviour
         }
 
         finalName = Path.Combine(directoryPath, $"{fileName}-{time}.csv");
-        if (!File.Exists(finalName))
-        {
-            File.WriteAllText(finalName, header + Environment.NewLine);
-        }
+        logString(header);
 
         isDataLogged = true;
         Debug.Log($"Log file successfully created: {finalName}");
@@ -70,7 +67,10 @@ public class DataLogger : MonoBehaviour
     }
 
     public void LogData(){
-        string lineToWrite = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ssZ") + separator + objectToTrack.position.x + separator + objectToTrack.position.y + separator + objectToTrack.position.z;
+        string lineToWrite = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ssZ") 
+                             + separator + objectToTrack.position.x.ToString()
+                             + separator + objectToTrack.position.y.ToString()
+                             + separator + objectToTrack.position.z.ToString();
         logString(lineToWrite);
     }
 
