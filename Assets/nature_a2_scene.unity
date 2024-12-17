@@ -2337,7 +2337,7 @@ GameObject:
   - component: {fileID: 200090425}
   - component: {fileID: 200090424}
   m_Layer: 0
-  m_Name: Cube medium (2)
+  m_Name: Cube medium 1
   m_TagString: object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3382,7 +3382,7 @@ GameObject:
   - component: {fileID: 327598859}
   - component: {fileID: 327598858}
   m_Layer: 0
-  m_Name: Cube medium (1)
+  m_Name: Cube medium (datalog)
   m_TagString: object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3511,11 +3511,11 @@ Transform:
   m_GameObject: {fileID: 327598857}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.6736526, y: 4.311735, z: 1.8088126}
+  m_LocalPosition: {x: -22.790762, y: 6.1717353, z: 9.034068}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1803936286}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &375899731 stripped
 Transform:
@@ -14465,7 +14465,7 @@ MonoBehaviour:
   separator: 59
   fileName: log
   header: time;X;Y;Z
-  objectToTrack: {fileID: 200090429}
+  objectToTrack: {fileID: 327598863}
 --- !u!4 &1669268741
 Transform:
   m_ObjectHideFlags: 0
@@ -15249,7 +15249,6 @@ Transform:
   m_Children:
   - {fileID: 2000884079}
   - {fileID: 200090429}
-  - {fileID: 327598863}
   - {fileID: 903175231}
   - {fileID: 812112538}
   m_Father: {fileID: 0}
@@ -18240,6 +18239,7 @@ SceneRoots:
   - {fileID: 938904758}
   - {fileID: 847699051}
   - {fileID: 2021686295}
+  - {fileID: 327598863}
   - {fileID: 1803936286}
   - {fileID: 59511804}
   - {fileID: 388236378}
