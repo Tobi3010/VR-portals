@@ -37,11 +37,6 @@ public class CustomButtonAction : MonoBehaviour
         if (logger == null)
         {
             Debug.LogError("Logger is null! Ensure the logger is assigned in the Inspector.");
-            // logger.InitiateLogFile();
-            // Debug.LogError("created it");
-            // if(logger != null){
-            //     logger.StartLogging();
-            // }
             return;
         }
         logger.StartLogging();
