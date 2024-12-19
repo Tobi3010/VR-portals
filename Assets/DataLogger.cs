@@ -73,6 +73,7 @@ public class DataLogger : MonoBehaviour
 
     public void StartLogging(){
         print("hej\n");
+        Debug.Log("StartLogging called");
         isDataLogged = !isDataLogged;
     }
 
