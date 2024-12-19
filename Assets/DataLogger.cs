@@ -20,7 +20,6 @@ public class DataLogger : MonoBehaviour
         InitiateLogFile();
     }
 
-    // Update is called once per frame
     void Update()
     {   
 
@@ -72,9 +71,15 @@ public class DataLogger : MonoBehaviour
     }
 
     public void StartLogging(){
-        print("hej\n");
-        Debug.Log("StartLogging called");
         isDataLogged = !isDataLogged;
+
+        if(isDataLogged == false){
+            Debug.Log("I guess I will stop logging for now :(");
+        }
+        else{
+            Debug.Log("I am logging again :)");
+
+        }
     }
 
 }

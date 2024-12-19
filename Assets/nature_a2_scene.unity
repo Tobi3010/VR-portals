@@ -10701,7 +10701,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212696160}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29264a89dc7f33d4c88d745cc37fcb79, type: 3}
   m_Name: 
@@ -10715,7 +10715,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212696160}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2204548214048c140a2bce376f798e4a, type: 3}
   m_Name: 
@@ -13653,7 +13653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customButtonActionReference: {fileID: -3599823989380923159, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
-  logger: {fileID: 0}
+  logger: {fileID: 1558461327}
 --- !u!1001 &1565096156
 PrefabInstance:
   m_ObjectHideFlags: 0
