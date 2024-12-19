@@ -8,10 +8,8 @@ public class DataLogger : MonoBehaviour
 {
     private bool isDataLogged = false;
     public char separator;
-    public string fileName;
     private string finalName;
     public string header;
-    public Transform objectToTrack; 
     private float timeInterval = 1.0f;
     private float timer = 0.0f;
     
@@ -58,27 +56,24 @@ public class DataLogger : MonoBehaviour
             return;
         }
 
-        finalName = Path.Combine(directoryPath, $"{fileName}-{time}.csv");
+        finalName = Path.Combine(directoryPath, $"log{name}-{time}.csv");
         logString(header);
 
-        isDataLogged = true;
         Debug.Log($"Log file successfully created: {finalName}");
         
     }
 
     public void LogData(){
         string lineToWrite = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ssZ") 
-                             + separator + objectToTrack.position.x.ToString()
-                             + separator + objectToTrack.position.y.ToString()
-                             + separator + objectToTrack.position.z.ToString();
+                             + separator + transform.position.x.ToString()
+                             + separator + transform.position.y.ToString()
+                             + separator + transform.position.z.ToString();
         logString(lineToWrite);
     }
 
     public void StartLogging(){
-        isDataLogged = true;
+        print("hej\n");
+        isDataLogged = !isDataLogged;
     }
 
-    public void StopLogging(){
-        isDataLogged = false;
-    }
 }

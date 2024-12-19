@@ -1523,6 +1523,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "A button",
+                    "type": "Button",
+                    "id": "55c78186-6078-4265-b81a-52f5f413c0bb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1930,6 +1939,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Thumbstick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7914545f-c88a-4fd8-a930-964234d67b1d",
+                    "path": "<XRSimulatedController>/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "A button",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
