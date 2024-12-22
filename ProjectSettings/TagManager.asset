@@ -8,6 +8,7 @@ TagManager:
   - object
   - Flowerpoint
   - Basket
+  - Marker
   layers:
   - Default
   - TransparentFX

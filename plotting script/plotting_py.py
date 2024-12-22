@@ -6,7 +6,7 @@ columns = ["time", "x", "y", "z"]
 
 # Read the CSV file
 df = pd.read_csv(
-    "logRight Controller-2024-12-19T15-19-59Z.csv",
+    "very_deformed_hangman.csv",
     delimiter=';', 
     decimal='.',  # Adjust to ',' if needed for decimals
     usecols=columns
