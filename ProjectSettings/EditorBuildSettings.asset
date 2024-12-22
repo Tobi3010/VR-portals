@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/collide_again_please.unity
     guid: 796af13392dcf504885c20bad3d1305b
-  - enabled: 1
+  - enabled: 0
     path: Assets/nature_a1_scene.unity
     guid: 8f123c9216f60a64a9117b7d4ec43898
   - enabled: 0
@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Samples/XR Interaction Toolkit/3.0.7/Hands Interaction Demo/HandsDemoScene.unity
     guid: 3ff35cecbcc52cc42945cf531638a60a
+  - enabled: 1
+    path: Assets/nature_a2_scene.unity
+    guid: 05bc0b4fe6f7c3c4c94e36441fcb210b
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}
