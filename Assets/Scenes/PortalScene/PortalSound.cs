@@ -23,7 +23,7 @@ public class AudioTrackerNoListener : MonoBehaviour
             else if (!domAudio.isPlaying && otherPortalAudio.isPlaying) {   // synchronize stop
                 otherPortalAudio.Stop();
             }
-            otherPortalAudio.volume = domAudio.volume * 0.8f;               // Copy the volume from source but lower it abit
+            otherPortalAudio.volume = domAudio.volume;               // Copy the volume from source but lower it abit
         }
     }
 
