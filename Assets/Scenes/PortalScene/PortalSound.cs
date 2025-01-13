@@ -23,7 +23,7 @@ public class AudioTrackerNoListener : MonoBehaviour
             else if (!domAudio.isPlaying && otherPortalAudio.isPlaying) {   // synchronize stop
                 otherPortalAudio.Stop();
             }
-            otherPortalAudio.volume = domAudio.volume;               // Copy the volume from source but lower it abit
+            otherPortalAudio.volume = 1;               // Copy the volume from source but lower it abit
         }
     }
 
@@ -33,9 +33,7 @@ public class AudioTrackerNoListener : MonoBehaviour
         float maxVolume = 0f;
         
         foreach (AudioSource audio in audios) {                        // Loop through all audios in our scene
-            if (audio == GetComponent<AudioSource>()) {
-                print("skipped!");
-                continue; }    // Skip if its this portal's audio
+            if (audio == GetComponent<AudioSource>()) { continue; }    // Skip if its this portal's audio
 
             if (audio.isPlaying) {                                     // Check if audio is actually playing
                 // Very basic attenuation formula, inverse square law (https://www.sciencedirect.com/topics/engineering/inverse-square-law)
