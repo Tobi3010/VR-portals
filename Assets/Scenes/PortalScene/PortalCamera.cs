@@ -25,10 +25,10 @@ public class PortalCamera : MonoBehaviour
         Vector3 newCameraDirection = portalRotationalDifference * playerCamera.forward;
 
         // Create a rotation that only considers yaw (ignore x and z components)
-        Quaternion targetRotation = Quaternion.LookRotation(newCameraDirection, Vector3.up);
+        transform.rotation = Quaternion.LookRotation(newCameraDirection, Vector3.up);
 
         // Apply the yaw-only rotation to the transform
-        transform.rotation = Quaternion.Euler(targetRotation.eulerAngles.x, targetRotation.eulerAngles.y, 0);
+        //transform.rotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
 
     }
 }
