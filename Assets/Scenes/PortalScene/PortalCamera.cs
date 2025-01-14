@@ -2,33 +2,29 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class PortalCamera : MonoBehaviour
 {
-    public Transform playerCamera;
-    public Transform portal;
-    public Transform otherPortal;
+    public Transform playerCamera;  // The player's camera
+    public Transform portal;       // The portal the player is looking through
+    public Transform otherPortal;  // The target portal
 
     void Update()
     {
+        // 1. Calculate position offset
         Vector3 playerOffsetFromPortal = playerCamera.position - otherPortal.position;
+
+        // Translate the camera position to the new portal
         transform.position = portal.position + playerOffsetFromPortal;
-        
-        // float angularDifferenceBetweenPortalRotation = Quaternion.Angle(portal.rotation, otherPortal.rotation);
-        // Quaternion portalRotationalDifference = Quaternion.AngleAxis(angularDifferenceBetweenPortalRotation, Vector3.up);
-        // Vector3 newCameraDirection = portalRotationalDifference * playerCamera.forward;
-        // transform.rotation.x = Quaternion.LookRotation(newCameraDirection, Vector3.up).x;
 
-        float angularDifferenceBetweenPortalRotation = Quaternion.Angle(portal.rotation, otherPortal.rotation);
-        Quaternion portalRotationalDifference = Quaternion.AngleAxis(angularDifferenceBetweenPortalRotation, Vector3.up);
+        // 2. Calculate rotation offset
+        // Find the relative rotation difference between the two portals
+        Quaternion portalRotationDifference = Quaternion.Inverse(otherPortal.rotation) * portal.rotation;
 
-        // Calculate the new camera direction while ignoring pitch and roll
-        Vector3 newCameraDirection = portalRotationalDifference * playerCamera.forward;
+        // Apply the rotation difference to the player's forward direction
+        Vector3 newCameraDirection = portalRotationDifference * playerCamera.forward;
 
-        // Create a rotation that only considers yaw (ignore x and z components)
+        // Set the camera's rotation, maintaining yaw alignment
         transform.rotation = Quaternion.LookRotation(newCameraDirection, Vector3.up);
-
-        // Apply the yaw-only rotation to the transform
-        //transform.rotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
-
     }
 }
