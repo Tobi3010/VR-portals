@@ -38,6 +38,7 @@ public class AudioTrackerNoListener : MonoBehaviour
             if (audio.isPlaying) {                                     // Check if audio is actually playing
                 // Very basic attenuation formula, inverse square law (https://www.sciencedirect.com/topics/engineering/inverse-square-law)
                 float dist = Vector3.Distance(transform.position, audio.transform.position);
+                if (dist > 100) { continue; }
                 float volume = audio.volume / (dist * dist);          
                 if (volume > maxVolume) {                               // Just baisc finding max algorithm           
                     maxVolume = volume;
