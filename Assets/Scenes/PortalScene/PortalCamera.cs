@@ -21,7 +21,7 @@ public class PortalCamera : MonoBehaviour
     {
         float distanceToPortal = Vector3.Distance(playerCamera.position, otherPortal.position);
 
-        if(distanceToPortal <= 15f){
+        if(distanceToPortal <= 30f){
             Vector3 playerOffsetFromPortal = playerCamera.position - otherPortal.position;
 
             transform.position = portal.position + playerOffsetFromPortal;
