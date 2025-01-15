@@ -9,22 +9,29 @@ public class PortalCamera : MonoBehaviour
     public Transform portal;       // The portal the player is looking through
     public Transform otherPortal;  // The target portal
 
+    private Vector3 originalPosition;
+    private Quaternion originalRotation;
+    
+    // save the original position and rotation of camera s.t. if the user is too far, we keep the image as is
+    void Start(){
+        originalPosition = transform.position;
+        originalRotation = transform.rotation;
+    }
     void Update()
     {
-        // 1. Calculate position offset
-        Vector3 playerOffsetFromPortal = playerCamera.position - otherPortal.position;
+        float distanceToPortal = Vector3.Distance(playerCamera.position, otherPortal.position);
 
-        // Translate the camera position to the new portal
-        transform.position = portal.position + playerOffsetFromPortal;
+        if(distanceToPortal <= 15f){
+            Vector3 playerOffsetFromPortal = playerCamera.position - otherPortal.position;
 
-        // 2. Calculate rotation offset
-        // Find the relative rotation difference between the two portals
-        Quaternion portalRotationDifference = Quaternion.Inverse(otherPortal.rotation) * portal.rotation;
+            transform.position = portal.position + playerOffsetFromPortal;
+            Quaternion portalRotationDifference = Quaternion.Inverse(otherPortal.rotation) * portal.rotation;
 
-        // Apply the rotation difference to the player's forward direction
-        Vector3 newCameraDirection = portalRotationDifference * playerCamera.forward;
-
-        // Set the camera's rotation, maintaining yaw alignment
-        transform.rotation = Quaternion.LookRotation(newCameraDirection, Vector3.up);
+            Vector3 newCameraDirection = portalRotationDifference * playerCamera.forward;
+            transform.rotation = Quaternion.LookRotation(newCameraDirection, Vector3.up);
+        }else{
+            transform.position = originalPosition;
+            transform.rotation = originalRotation;
+        }
     }
 }
