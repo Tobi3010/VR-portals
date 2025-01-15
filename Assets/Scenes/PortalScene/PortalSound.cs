@@ -34,7 +34,7 @@ public class AudioTrackerNoListener : MonoBehaviour
                 {
                     otherPortalAudio.Stop(); // Synchronize stop
                 }
-                otherPortalAudio.volume = 1; 
+                otherPortalAudio.volume = domAudio.volume; 
             }
         }
     }
