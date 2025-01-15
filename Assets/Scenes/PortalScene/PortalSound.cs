@@ -24,15 +24,17 @@ public class AudioTrackerNoListener : MonoBehaviour
             if (domAudio != null)
             {
                 otherPortalAudio.clip = domAudio.clip; // Set the otherPortal to play the found audio
-                if (domAudio.isPlaying && !otherPortalAudio.isPlaying)
-                { // Synchronize play
-                    otherPortalAudio.Play();
+
+                // Ensure that otherPortalAudio is enabled and has a valid clip before playing
+                if (domAudio.isPlaying && !otherPortalAudio.isPlaying && otherPortalAudio.enabled && otherPortalAudio.clip != null)
+                {
+                    otherPortalAudio.Play(); // Synchronize play
                 }
                 else if (!domAudio.isPlaying && otherPortalAudio.isPlaying)
-                { // Synchronize stop
-                    otherPortalAudio.Stop();
+                {
+                    otherPortalAudio.Stop(); // Synchronize stop
                 }
-                otherPortalAudio.volume = 1; // Copy the volume from source but lower it a bit
+                otherPortalAudio.volume = 1; 
             }
         }
     }
@@ -41,7 +43,8 @@ public class AudioTrackerNoListener : MonoBehaviour
     {
         nearbyPortalAudios = new List<AudioSource>();
         AudioTrackerNoListener[] allPortals = FindObjectsOfType<AudioTrackerNoListener>(); // Find all portals in the scene
-        foreach (var portal in allPortals) {  
+        foreach (var portal in allPortals)
+        {
             nearbyPortalAudios.Add(portal.otherPortalAudio); // Add other portal's audio source
         }
     }
@@ -53,13 +56,13 @@ public class AudioTrackerNoListener : MonoBehaviour
 
         foreach (AudioSource audio in audios)
         { // Loop through all audios in our scene
-            if (nearbyPortalAudios.Contains(audio)) { continue; } // Skip if audi is from portal
-            
+            if (nearbyPortalAudios.Contains(audio)) { continue; } // Skip if audio is from portal
+
             if (audio.isPlaying)
             { // Check if audio is actually playing
                 // Very basic attenuation formula, inverse square law
                 float dist = Vector3.Distance(transform.position, audio.transform.position);
-                if (dist > 100) { continue; }
+                if (dist > portalDetectionRange) { continue; }
                 float volume = audio.volume / (dist * dist);
                 if (volume > maxVolume)
                 { // Basic finding max algorithm
