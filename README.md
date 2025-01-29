@@ -8,7 +8,7 @@
         By Benjamin Daniel Nyberg Shultz, Knzy Elmasry, and Tobias Andersen
   </span>
   </span>
-  <img src="portal.gif" alt="Portals in VR GIF" style="margin-top: 20px; width: 80%; height: auto;">
+  <img src="portal.gif" alt="Portals in VR GIF" style="margin-top: 20px; width: 100%; height: auto;">
   
 </h3>
 
