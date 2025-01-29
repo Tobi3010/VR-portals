@@ -1,5 +1,5 @@
 <h3 align="center">
-  <span style="font-size: 48px;">
+  <span style="font-size: 60px;">
     Portals in VR: Exploring Visual and Auditory Tools’ Effects on Portal Design 
     <span style="font-size: 48px;">
        Exam Project in Virtuel Reallity at Copenhagen University
