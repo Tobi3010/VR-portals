@@ -1,6 +1,7 @@
 <p align="center">
   <a href="https://example.com/">
-    <img src="https://via.placeholder.com/72" alt="Logo" width=72 height=72>
+    <img src="![Your Video GIF](portal.gif)" alt="Portals in VR: Exploring Visual and Auditory Tools’ Effects on Portal Design
+ Fall 2024/2025" width=72 height=72>
   </a>
 
   <h3 align="center">Logo</h3>
@@ -76,14 +77,8 @@ Editor preferences are available in the [editor config](https://reponame/blob/ma
 
 Some Text
 
-## Copyright and license
-
-Code and documentation copyright 2023-2024 the authors. Code released under the [MIT License](https://reponame/blob/master/LICENSE).
-
-Enjoy :metal:
 
 
-![Your Video GIF](portal.gif)
 
 
 Group 8:
