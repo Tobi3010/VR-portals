@@ -13,7 +13,7 @@
 </h3>
 
 # About This Project
-This project explores the impact of audio-visual design on user experience and presence in virtual reality (VR) portals. We conducted a user study to evaluate four portal transition techniques: no visual/audio, visual-only, audio-only, and both visual and audio. The goal was to determine which design most effectively enhances presence and continuity during portal-based teleportation. Results showed that adding audio-visual previews significantly improved presence and continuity, with audio proving to have the strongest impact. This work provides insights into optimizing portal designs for a more engaging and immersive VR experience.
+This project explores the impact of audio-visual design on user experience and presence in virtual reality (VR) portals. We conducted a user study to evaluate four portal transition techniques: no visual/audio, visual-only, audio-only, and both visual and audio. The goal was to determine which design most effectively enhances presence and continuity during portal-based teleportation. Results showed that adding audio-visual previews significantly improved presence and continuity. This work provides insights into optimizing portal designs for a more engaging and presence VR experience.
 
 ## Learn more
 - PAPER :: To read our research paper, look at our repository and find "Portals-in-VR.pdf".
