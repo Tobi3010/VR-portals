@@ -1,12 +1,12 @@
 <h3 align="center">
   <span style="font-size: 48px;">
     Portals in VR: Exploring Visual and Auditory Tools’ Effects on Portal Design
-    <span style="font-size: 48px;">
-       Exam Project in Virtuel Reallity at Copenhagen University
-    </span>
-    <span style="font-size: 48px;">
-        By Benjamin Daniel Nyberg Shultz, Knzy Elmasry, and Tobias Andersen
-    </span>
+  </span><br>
+  <span style="font-size: 48px;">
+      Exam Project in Virtuel Reallity at Copenhagen University
+  </span><br>
+  <span style="font-size: 48px;">
+      By Benjamin Daniel Nyberg Shultz, Knzy Elmasry, and Tobias Andersen
   </span>
   <img src="portal.gif" alt="Portals in VR GIF" style="margin-top: 20px; width: 100%; height: auto;">
   
