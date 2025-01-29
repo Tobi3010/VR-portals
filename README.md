@@ -12,9 +12,12 @@
   </span>
 </h3>
 
-
 ## About This Project
+This project explores the impact of audio-visual design on user experience and presence in virtual reality (VR) portals. We conducted a user study to evaluate four portal transition techniques: no visual/audio, visual-only, audio-only, and both visual and audio. The goal was to determine which design most effectively enhances presence and continuity during portal-based teleportation. Results showed that adding audio-visual previews significantly improved presence and continuity, with audio proving to have the strongest impact. This work provides insights into optimizing portal designs for a more engaging and immersive VR experience.
 
+# Learn more
+- PAPER :: To read our research paper, look at our repository and find "Portals-in-VR.pdf".
+- VIDEO :: For a short video showing what we have made, click the link: [Video Of Our Portals](https://youtu.be/nUWKOnBQZqQ)
 
 ## How To Run & Play
 - FILE :: Our '.apk' file is located in the folder, 'vr-enjoyers/Build', and is called 'PortalScene.apk'.
