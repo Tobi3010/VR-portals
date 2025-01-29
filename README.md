@@ -1,10 +1,10 @@
 <p align="center">
   <a href="https://example.com/">
-    <img src="![Your Video GIF](portal.gif)" alt="Portals in VR: Exploring Visual and Auditory Tools’ Effects on Portal Design
+    <img src="" alt="Portals in VR: Exploring Visual and Auditory Tools’ Effects on Portal Design
  Fall 2024/2025" width=72 height=72>
   </a>
 
-  <h3 align="center">Logo</h3>
+  <h3 align="center">![Your Video GIF](portal.gif)</h3>
 
   <p align="center">
     Short description
