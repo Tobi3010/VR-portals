@@ -1,6 +1,6 @@
-<p align="center">
-  ![Portals in VR GIF](portal.gif)
-</p>
+<h3 align="center">
+  `![Portals in VR GIF](portal.gif)`
+</h3>
 
 <p align="center">
   Portals in VR: Exploring Visual and Auditory Tools’ Effects on Portal Design Fall 2024/2025
