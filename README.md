@@ -1,3 +1,6 @@
+![Your Video GIF](portal.gif)
+
+
 Group 8:
 Benjamin Daniel Nyberg Shultz(mvf630), Knzy Elmasry(mjk987), and Tobias Andersen(glj539)
 
